@@ -52,15 +52,6 @@ Movies/
 ├── Persistence/              # UserPreferences (SwiftData model)
 └── Theme/                    # AppTheme (colors, typography constants)
 ```
-
-### Layer Rules
-
-| Layer | May depend on |
-|---|---|
-| Domain | Nothing outside Domain |
-| Data | Domain only |
-| Presentation (Features) | Domain only (via use-case protocols) |
-
 ---
 
 ## Tech Stack
