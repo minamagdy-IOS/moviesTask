@@ -19,7 +19,7 @@ struct MovieDetailsHeaderView: View {
     }
 }
 
-struct BackdropImageView: View {
+private struct BackdropImageView: View {
     let backdropURL: URL?
 
     var body: some View {
@@ -58,7 +58,7 @@ struct BackdropImageView: View {
     }
 }
 
-struct HeaderButtonsView: View {
+private struct HeaderButtonsView: View {
     let onBackTapped: () -> Void
 
     var body: some View {
@@ -72,7 +72,7 @@ struct HeaderButtonsView: View {
     }
 }
 
-struct CircleButton: View {
+private struct CircleButton: View {
     let icon: String
     let action: () -> Void
 

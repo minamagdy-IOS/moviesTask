@@ -29,8 +29,8 @@ final class MockMoviesRemoteDataSource: MoviesRemoteDataSourceProtocol {
             totalPages: 5,
             totalResults: 100,
             results: [
-                MovieDTO(id: 1, posterPath: "/poster1.jpg",releaseDate: "2024-01-01", title: "Movie 1"),
-                MovieDTO(id: 1, posterPath: "/poster2.jpg",releaseDate: "2024-01-02", title: "Movie 2"),
+                MovieDTO(id: 1, posterPath: "/poster1.jpg", releaseDate: "2024-01-01", title: "Movie 1"),
+                MovieDTO(id: 2, posterPath: "/poster2.jpg", releaseDate: "2024-01-02", title: "Movie 2"),
             ]
         )
     }

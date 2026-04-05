@@ -22,7 +22,7 @@ struct HomeViewModelTests {
             reachability: mockReachability
         )
         
-        await viewModel.loadMovies(form: 1)
+        await viewModel.loadMovies(from: 1)
         
         #expect(viewModel.movies.count == 2)
     }
@@ -38,7 +38,7 @@ struct HomeViewModelTests {
             reachability: mockReachability
         )
         
-        await viewModel.loadMovies(form: 1, genreOverride: "28")
+        await viewModel.loadMovies(from: 1, genreOverride: "28")
         
         #expect(viewModel.selectedGenre == "28")
     }

@@ -46,17 +46,15 @@ final class HomeViewModel: ObservableObject {
                 let wasOffline = !self.isOnline
                 self.isOnline = online
                 if online, wasOffline {
-                    Task {
-                        await self.getGenre()
-                        await self.loadMovies(form: 1)
-                    }
+                    await self.getGenre()
+                    await self.loadMovies(from: 1)
                 }
             }
         }
         setupSearchDebouncer()
         Task {
             await getGenre()
-            await loadMovies(form: 1)
+            await loadMovies(from: 1)
         }
     }
 
@@ -74,7 +72,7 @@ extension HomeViewModel {
         return "\(tid)"
     }
 
-    func loadMovies(form page: Int = 1, genreOverride: String? = nil) async {
+    func loadMovies(from page: Int = 1, genreOverride: String? = nil) async {
         if let override = genreOverride { selectedGenre = override }
         if page == 1 { hasMorePages = true }
         guard !isLoadingPage else { return }
@@ -106,7 +104,7 @@ extension HomeViewModel {
     }
 
     func searchMovies() async {
-        await loadMovies(form: 1)
+        await loadMovies(from: 1)
     }
 
     func loadMoreMoviesIfNeeded(currentItem: Movie) async {
@@ -117,7 +115,7 @@ extension HomeViewModel {
             hasMorePages = false
             return
         }
-        await loadMovies(form: next)
+        await loadMovies(from: next)
     }
 
     func getGenre() async {

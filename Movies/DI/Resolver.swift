@@ -39,22 +39,21 @@ final class Resolver {
         let remote = MoviesRemoteDataSource(client: networkClient)
         let diskCache = MovieListDiskCacheFactory.makeDefault()
 
-        // Data layer
-        shared.register(MoviesRepository.self) {
-            MoviesRepository(remote: remote, cache: diskCache, reachability: reachability)
-        }
+        // Data layer — single shared repository instance
+        let repository = MoviesRepository(remote: remote, cache: diskCache, reachability: reachability)
+        shared.register(MoviesRepository.self) { repository }
 
         // Domain use cases — registered against their protocols
         shared.register((any GetMoviesUC).self) {
-            GetMoviesUseCase(repository: shared.resolve(MoviesRepository.self)) as any GetMoviesUC
+            GetMoviesUseCase(repository: repository) as any GetMoviesUC
         }
 
         shared.register((any GetGenresUC).self) {
-            GetGenresUseCase(repository: shared.resolve(MoviesRepository.self)) as any GetGenresUC
+            GetGenresUseCase(repository: repository) as any GetGenresUC
         }
 
         shared.register((any GetMovieDetailsUC).self) {
-            GetMovieDetailsUseCase(repository: shared.resolve(MoviesRepository.self)) as any GetMovieDetailsUC
+            GetMovieDetailsUseCase(repository: repository) as any GetMovieDetailsUC
         }
 
         // Presentation view models

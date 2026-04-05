@@ -48,7 +48,7 @@ struct HomeView: View {
                         try? modelContext.save()
                         Task {
                             await viewModel.loadMovies(
-                                form: 1,
+                                from: 1,
                                 genreOverride: viewModel.genreIdString(at: newIndex)
                             )
                         }
@@ -77,7 +77,7 @@ struct HomeView: View {
                 }
                 Task { await viewModel.searchMovies() }
             }
-            .refreshable { await viewModel.loadMovies(form: 1) }
+            .refreshable { await viewModel.loadMovies(from: 1) }
             .navigationDestination(for: Movie.self) { movie in
                 MovieDetailView(movie: movie)
             }

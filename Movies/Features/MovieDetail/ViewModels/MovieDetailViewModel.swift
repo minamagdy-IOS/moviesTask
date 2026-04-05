@@ -38,15 +38,13 @@ final class MovieDetailViewModel: ObservableObject {
     // MARK: - Formatted display values
 
     var genresDisplay: String {
-        movieDetail?.genres.isEmpty == false
-            ? movieDetail!.genres.joined(separator: ", ")
-            : "—"
+        guard let genres = movieDetail?.genres, !genres.isEmpty else { return "—" }
+        return genres.joined(separator: ", ")
     }
 
     var languagesDisplay: String {
-        movieDetail?.spokenLanguages.isEmpty == false
-            ? movieDetail!.spokenLanguages.joined(separator: ", ")
-            : "—"
+        guard let languages = movieDetail?.spokenLanguages, !languages.isEmpty else { return "—" }
+        return languages.joined(separator: ", ")
     }
 
     var budgetDisplay: String { format(currency: movieDetail?.budget ?? 0) }

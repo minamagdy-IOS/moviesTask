@@ -52,7 +52,7 @@ struct MovieDetailView: View {
     }
 }
 
-struct MovieDetailsContentView: View {
+private struct MovieDetailsContentView: View {
     let movieDetail: MovieDetail
     let viewModel: MovieDetailViewModel
 
@@ -119,7 +119,7 @@ private struct PosterImageView: View {
             }
         }
         .frame(width: 100, height: 150)
-        .cornerRadius(8)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private var placeholder: some View {
