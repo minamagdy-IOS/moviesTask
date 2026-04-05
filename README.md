@@ -1,6 +1,6 @@
 # Movies
 
-A SwiftUI iOS app for discovering and browsing movies powered by [The Movie Database (TMDB) API](https://developer.themoviedb.org).
+A SwiftUI iOS app for discovering and browsing movies.
 
 <p align="center">
   <img src="img11.png" alt="Stocks screenshot 1" width="180" />
