@@ -10,12 +10,12 @@ import Foundation
 struct MoviesRepository: MoviesRepositoryProtocol {
     private let remote: MoviesRemoteDataSourceProtocol
     private let cache: MovieListDiskCaching
-    private let reachability: ReachabilityService
+    private let reachability: any ConnectivityStatusProviding
 
     init(
         remote: MoviesRemoteDataSourceProtocol,
         cache: MovieListDiskCaching,
-        reachability: ReachabilityService
+        reachability: any ConnectivityStatusProviding
     ) {
         self.remote = remote
         self.cache = cache
